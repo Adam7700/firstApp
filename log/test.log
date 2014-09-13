@@ -939,3 +939,625 @@
   [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1
   [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = ' ' AND "users"."id" != 1) LIMIT 1[0m
   [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:30:22.533412"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:30:22.533412"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:30:22.540172"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:30:22.540172"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:30:22.543296"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:30:22.543296"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:30:22.546522"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:30:22.546522"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:30:22.551700"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:30:22.551700"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."name" = ' ' AND "users"."id" != 1) LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:30:22.562066"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:30:22.562066"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = ' ' AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:30:22.567094"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:30:22.567094"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = '' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:30:22.572074"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:30:22.572074"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:30:22.577142"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:30:22.577142"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:30:22.582133"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:30:22.582133"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."name" = '' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:31:09.562326"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:09.562326"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:31:09.568264"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:09.568264"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:31:09.570487"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:09.570487"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:31:09.573011"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:09.573011"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:31:09.575487"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:09.575487"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:31:09.583720"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:09.583720"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:31:09.586961"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:09.586961"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:31:09.589940"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:09.589940"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:31:09.592888"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:09.592888"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:31:09.596036"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:09.596036"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:31:27.560819"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:27.560819"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:31:27.566978"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:27.566978"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:31:27.569650"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:27.569650"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:31:27.571938"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:27.571938"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:31:27.574360"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:27.574360"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:31:27.577411"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:27.577411"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:31:27.580358"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:27.580358"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:31:27.588332"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:27.588332"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:31:27.591375"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:27.591375"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:31:27.594186"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:31:27.594186"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:32:17.483623"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:17.483623"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:32:17.489356"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:17.489356"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:32:17.491513"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:17.491513"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:32:17.493737"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:17.493737"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:32:17.496343"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:17.496343"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:32:17.504176"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:17.504176"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:32:17.507239"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:17.507239"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:32:17.510272"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:17.510272"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:32:17.513218"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:17.513218"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:32:17.516289"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:17.516289"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:32:32.443803"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:32.443803"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:32:32.451433"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:32.451433"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:32:32.453820"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:32.453820"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:32:32.456136"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:32.456136"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:32:32.458488"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:32.458488"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:32:32.466607"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:32.466607"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:32:32.469874"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:32.469874"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:32:32.472945"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:32.472945"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:32:32.477248"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:32.477248"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:32:32.482172"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:32:32.482172"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:34:25.239218"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:25.239218"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:34:25.245200"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:25.245200"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:34:25.247497"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:25.247497"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:34:25.249791"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:25.249791"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:34:25.252584"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:25.252584"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:34:25.255680"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:25.255680"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:34:25.263753"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:25.263753"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:34:25.267011"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:25.267011"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:34:25.270161"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:25.270161"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:34:25.273323"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:25.273323"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:34:25.276464"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:25.276464"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:34:25.279701"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:25.279701"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:34:25.282684"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:25.282684"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:34:44.589850"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:44.589850"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:34:44.596750"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:44.596750"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:34:44.601637"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:44.601637"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:34:44.604752"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:44.604752"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:34:44.608000"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:44.608000"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."name" = '' AND "users"."id" != 1) LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:34:44.617842"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:44.617842"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = '' AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:34:44.622854"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:44.622854"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'Jane Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:34:44.627993"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:44.627993"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."name" = ' ' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:34:44.633029"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:44.633029"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = ' ' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:34:44.637992"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:44.637992"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:34:44.643042"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:44.643042"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'duplicate@example.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:34:44.648231"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:44.648231"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:34:44.653175"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:34:44.653175"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' AND "users"."id" != 1) LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:37:50.367310"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:37:50.367310"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:37:50.374093"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:37:50.374093"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:37:50.377998"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:37:50.377998"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:37:50.383150"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:37:50.383150"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:37:50.386491"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:37:50.386491"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."name" = ' ' AND "users"."id" != 1) LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:37:50.396534"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:37:50.396534"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:37:50.401649"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:37:50.401649"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."name" = '' AND "users"."id" != 1) LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:37:50.406672"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:37:50.406672"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = '' AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:37:50.411738"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:37:50.411738"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'duplicate@example.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:37:50.416871"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:37:50.416871"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:37:50.421957"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:37:50.421957"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'Jane Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-13 20:37:50.426986"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:37:50.426986"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = ' ' AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."name" = 'John Doe' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jdoe@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-09-13 20:37:50.432001"], ["email", "jdoe@example.com"], ["name", "John Doe"], ["password", "password"], ["updated_at", "2014-09-13 20:37:50.432001"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."name" = 'John Doe' AND "users"."id" != 1) LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jdoe@example.com' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
