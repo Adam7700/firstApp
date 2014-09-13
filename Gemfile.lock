@@ -83,7 +83,11 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.2)
+<<<<<<< HEAD
     rdoc (4.1.2)
+=======
+    rdoc (4.1.1)
+>>>>>>> 9709c858c713aef57d706ced5d58c1cf52aa467b
       json (~> 1.4)
     rspec-core (3.1.2)
       rspec-support (~> 3.1.0)
