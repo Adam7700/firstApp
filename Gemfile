@@ -50,15 +50,6 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-<<<<<<< HEAD
-#I added these
-group :test do
-	gem 'capybara'
-end
-
-group :development, :test do
-	gem 'rspec-rails'
-end
 
 =======
 >>>>>>> 9709c858c713aef57d706ced5d58c1cf52aa467b
