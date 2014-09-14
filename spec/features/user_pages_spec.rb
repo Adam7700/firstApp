@@ -7,9 +7,9 @@ describe "User Pages" do
 			
       before do
         25.times do |i|
-          User.create(name: "Person#{i}",
-                      email: "Person#{i}@example.com",
-                      password: 'password')
+          User.create(name: "Person #{i}",
+                      email: "Person.#{i}@example.com",
+                      password: "password")
         end
         visit '/users'
       end
