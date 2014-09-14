@@ -6,12 +6,8 @@ describe "User Pages" do
 		describe "all" do
 			
       before do
-        25.times do |i|
-          User.create(name: "Person #{i}",
-                      email: "Person.#{i}@example.com",
-                      password: "password")
-        end
-        visit '/users'
+        25.times {|i| FactoryGirl.create(:user) }
+        visit users_path
       end
       it {should have_content('List of users') }
       it {should have_content('25 users')}
