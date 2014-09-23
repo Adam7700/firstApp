@@ -1,0 +1,14 @@
+<p>Edit your stuff <%= @user.name %> </p>
+
+<%= form_for :person do |f| %>
+    <%= f.label :name, 'Username' %>
+<%= f.text_field :name, :value => @user.name %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email, :value => @user.email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.submit 'Submit' %>
+<% end %>
