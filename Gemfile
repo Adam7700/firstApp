@@ -6,7 +6,20 @@ gem 'rails', '4.1.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
+<<<<<<< HEAD
 gem 'sass-rails', '~> 4.0.3'
+=======
+gem 'sass-rails', '~> 4.0.0'
+
+group :test do
+    gem 'capybara'
+    gem 'factory_girl_rails'
+end
+
+group :development, :test do
+    gem 'rspec-rails'
+end
+>>>>>>> 3258a75cb0d4afbf384806f3a91cc86858f834a4
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
