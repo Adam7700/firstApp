@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  #  respond_to :html
+    
     def index
 	@users = User.all
     end
@@ -8,14 +10,14 @@ class UsersController < ApplicationController
     end
 
     def create
-	@user = User.new(params.require(:user).permit(:name, :email, :password))
-	if @user.save
-	    flash[:success] = "Welcome to the site, #{@user.name}"
-	    redirect_to @user
-	else
-	    flash.now[:danger] = "Unable to create new user"
-	    render 'new'
-	end
+	    @user = User.new(params.require(:user).permit(:name, :email, :password))
+    	if @user.save
+	        flash[:success] = "Welcome to the site, #{@user.name}"
+	        redirect_to @user
+    	else
+	        flash.now[:danger] = "Unable to create new user"
+	        render 'new'
+	    end
     end
 
     def show
@@ -28,4 +30,16 @@ class UsersController < ApplicationController
     def edit
         @user = User.find(params[:id])
     end
+    
+    def update
+        @user = User.find(params[:id])
+        if @user.update_attributes(params.require(:user).permit(:name, :email, :password))
+            flash[:success] = "Profile updated!"
+            redirect_to user_path
+        else
+            flash[:danger] = "not able to update!"
+            render 'edit'
+        end
+    end
+ 
 end

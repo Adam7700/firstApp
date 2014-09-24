@@ -1,8 +1,15 @@
-<p>Edit your stuff <%= @user.name %> </p>
+<% if @user.errors.any? %>
+    <p class="ALERT-danger">The form has <%= pluralize(@user.errors.count, 'error') %>.</p>
+    <ul>
+	<% @user.errors.full_messages.each do |message| %>
+	    <li><%= message %></li>
+	<% end %>
+    </ul>
+<% end %>
 
-<%= form_for :person do |f| %>
+<%= form_for @user do |f| %>
     <%= f.label :name, 'Username' %>
-<%= f.text_field :name, :value => @user.name %>
+    <%= f.text_field :name, :value => @user.name %>
 
     <%= f.label :email %>
     <%= f.text_field :email, :value => @user.email %>
