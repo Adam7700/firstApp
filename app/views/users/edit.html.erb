@@ -9,13 +9,13 @@
 
 <%= form_for @user do |f| %>
     <%= f.label :name, 'Username' %>
-    <%= f.text_field :name, :value => @user.name %>
+    <%= f.text_field :name%>
 
     <%= f.label :email %>
-    <%= f.text_field :email, :value => @user.email %>
+    <%= f.text_field :email%>
 
     <%= f.label :password %>
     <%= f.password_field :password %>
 
-    <%= f.submit 'Submit' %>
+<%= f.submit 'Update user profile' %>
 <% end %>
