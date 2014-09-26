@@ -38,7 +38,7 @@ class UsersController < ApplicationController
             flash[:success] = "Profile updated!"
             redirect_to user_path
         else
-            flash[:danger] = "not able to update!"
+            flash.now[:danger] = "not able to update!"
             render 'edit'
         end
     end
