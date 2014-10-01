@@ -66,30 +66,32 @@ describe "User Pages" do
 
 	describe "with valid information" do
 	    before do
-		fill_in 'Username', with: 'John Doe'
-		fill_in 'Email', with: 'john.doe@example.com'
-		fill_in 'Password', with: 'password'
+			fill_in 'Username', with: 'John Doe'
+			fill_in 'Email', with: 'john.doe@example.com'
+			fill_in 'Password', with: 'password'
+			fill_in 'Confirmation', with: 'password'
 	    end
 
 	    it "allows the user to fill in the fields" do
-		click_button submit
+			click_button submit
 	    end
 
 	    it "does add the user to the system" do
-		expect { click_button submit }.to change(User, :count).by(1)
+			expect { click_button submit }.to change(User, :count).by(1)
 	    end
 
 	    describe "produces a welcome message" do
-		before { click_button submit }
+			before { click_button submit }
 
-		it { should have_alert(:success, text: 'Welcome') }
+			it { should have_alert(:success, text: 'Welcome') }
 	    end
 
 	    describe "redirects to profile page", type: :request do
-		before do
-		    post users_path, user: { name: 'John Doe',
+			before do
+		   		post users_path, user: { name: 'John Doe',
 					     email: 'john.doe@example.com',
-					     password: 'password' }
+					     password: 'password', 
+						 password_confirmation: "password"}
 		end
 
 		specify do
@@ -151,6 +153,7 @@ describe "User Pages" do
 		    fill_in 'Username', with: 'New Name'
 		    fill_in 'Email', with: 'new.name@example.com'
 		    fill_in 'Password', with: user.password
+			fill_in 'Confirmation', with: user.password
 	    end
 
 	    describe "changes the data" do
@@ -164,19 +167,20 @@ describe "User Pages" do
 		    before do
 		        patch user_path(user), user: { name: 'New Name',
 				    		   email: 'new.name@example.com',
-				    		   password: user.password }
+				    		   password: user.password,
+							   password_confirmation: user.password}
 	    	end
 
 		    specify { expect(response).to redirect_to(user_path(user)) }
 	    end
 
 	        it "produces an update message" do
-	    	click_button submit
-		    should have_alert(:success)
+	    		click_button submit
+		  		should have_alert(:success)
 	        end
 
 	        it "does not add a new user to the system" do
-		    expect { click_button submit }.not_to change(User, :count)
+		  	  expect { click_button submit }.not_to change(User, :count)
 	        end
 	    end
     end

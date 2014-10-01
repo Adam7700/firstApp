@@ -7,50 +7,52 @@ describe User do
 
     it { should respond_to(:name) }
     it { should respond_to(:email) }
-    it { should respond_to(:password) }
-
+	it { should respond_to(:password) } # virtual attribute
+	it { should respond_to(:password_digest) }
+	it { should respond_to(:authenticate) }
+	
     it { should be_valid }
 
     describe "empty name" do
-	before { user.name = '' }
+		before { user.name = '' }
 
-	it { should_not be_valid }
+		it { should_not be_valid }
     end
 
     describe "blank name" do
-	before { user.name = ' ' }
+		before { user.name = ' ' }
 
-	it { should_not be_valid }
+		it { should_not be_valid }
     end
 
     describe "empty email" do
-	before { user.email = '' }
+		before { user.email = '' }
 
-	it { should_not be_valid }
+		it { should_not be_valid }
     end
 
     describe "blank email" do
-	before { user.email = ' ' }
+		before { user.email = ' ' }
 
-	it { should_not be_valid }
+		it { should_not be_valid }
     end
 
     describe "empty password" do
-	before { user.password = '' }
-
-	it { should_not be_valid }
+		let(:unsaved_user) { FactoryGirl.build(:user, password: "") }
+		
+		specify{ expect(unsaved_user).not_to be_valid }
     end
 
     describe "blank password" do
-	before { user.password = ' ' }
-
-	it { should_not be_valid }
+		let(:unsaved_user) { FactoryGirl.build(:user, password: " ") }
+		
+		specify{ expect(unsaved_user).not_to be_valid }
     end
 
     describe "long name" do
-	before { user.name = 'a' * 51 }
+		before { user.name = 'a' * 51 }
 
-	it { should_not be_valid }
+		it { should_not be_valid }
     end
 
     describe "duplicate name" do
