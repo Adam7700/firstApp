@@ -27,12 +27,12 @@ class UsersController < ApplicationController
 	    flash[:danger] = "Unable to find user"
 	    redirect_to users_path
     end
-<<<<<<< HEAD
     
     def edit
         @user = User.find(params[:id])
         rescue
 	    flash[:danger] = "Unable to find user"
+
 	    redirect_to users_path
     end
     
@@ -54,6 +54,16 @@ class UsersController < ApplicationController
         redirect_to users_path
     end
      
+	def ensure_user_logged_in
+		@user = User.find_by(name: params[:username])
+		if @user && @user.authenticate(params[:password])
+			flash[:success]
+		else
+			flash[:warning]
+		end
+	
+	end
+	
     private
     
     def user_params

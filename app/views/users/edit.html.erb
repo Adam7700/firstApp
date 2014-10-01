@@ -1,6 +1,7 @@
 <%= render partial: 'errors' %>
 
 <%= form_for @user do |form| %>
+<p> Edit profile </p>
     <%= render partial: 'fields', locals: { f: form } %>
 
     <%= form.submit 'Update user profile' %>

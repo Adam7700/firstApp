@@ -5,5 +5,5 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include LoginsHelper
->>>>>>> ef60c24e0794212e4c4adff421f0c59dcc26805b
+
 end
