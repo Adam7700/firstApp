@@ -65,7 +65,7 @@ class UsersController < ApplicationController
 	def ensure_user_logged_in
 		@user = User.find(params[:id])
 		if !logged_in?
-			flash[:warning]
+			flash[:warning] = "Warning"
 			redirect_to login_path
 		end
 		rescue
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
 	def ensure_correct_user
 		user = User.find(params[:id])
 		if !current_user?(user)
-			flash[:warning]
+			flash[:warning]="Another Warning"
 			redirect_to login_path
 		end
 		rescue
