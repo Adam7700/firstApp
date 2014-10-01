@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :ensure_user_logged_in, only: [:edit]
+	before_action :ensure_user_logged_in, :ensure_correct_user, only: [:edit, :update]
 
     def index
 	@users = User.all
@@ -29,10 +29,10 @@ class UsersController < ApplicationController
     end
     
     def edit
-        @user = User.find(params[:id])
+        @user = User.find(params[:id])	
         rescue
 	    flash[:danger] = "Unable to find user"
-
+		
 	    redirect_to users_path
     end
     
@@ -53,21 +53,35 @@ class UsersController < ApplicationController
         flash[:success] = "#{@user.name} removed from the site"
         redirect_to users_path
     end
-     
-	def ensure_user_logged_in
-		@user = User.find_by(name: params[:username])
-		if @user && @user.authenticate(params[:password])
-			flash[:success]
-		else
-			flash[:warning]
-		end
-	
-	end
+
+
 	
     private
     
     def user_params
 		params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+	
+	def ensure_user_logged_in
+		@user = User.find(params[:id])
+		if !logged_in?
+			flash[:warning]
+			redirect_to login_path
+		end
+		rescue
+	    flash[:danger] = "Unable to find user"
+	    redirect_to users_path
+	end
+
+	def ensure_correct_user
+		user = User.find(params[:id])
+		if !current_user?(user)
+			flash[:warning]
+			redirect_to login_path
+		end
+		rescue
+	    flash[:danger] = "Unable to find user"
+	    redirect_to users_path
+	end
     
 end

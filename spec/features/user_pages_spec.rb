@@ -153,10 +153,10 @@ describe "User Pages" do
 
 	describe "with valid information" do
 	    before do
-		fill_in 'Username', with: 'New Name'
-		fill_in 'Email', with: 'new.name@example.com'
-		fill_in 'Password', with: user.password
-		fill_in 'Confirmation', with: user.password
+			fill_in 'Username', with: 'New Name'
+			fill_in 'Email', with: 'new.name@example.com'
+			fill_in 'Password', with: user.password
+			fill_in 'Confirmation', with: user.password
 	    end
 
 	    describe "changes the data" do
