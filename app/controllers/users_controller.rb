@@ -90,5 +90,5 @@ class UsersController < ApplicationController
 	    redirect_to root_path
 	end
     end
->>>>>>> acd38e40bdcbe76945ee9d7e7abb22b973d3ef24
+
 end
