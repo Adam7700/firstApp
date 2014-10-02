@@ -16,6 +16,7 @@ describe User do
     it { should be_valid }
 	it { should_not be_admin }
 
+
     describe "empty name" do
 		before { user.name = '' }
 

@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-	before_action :ensure_user_logged_in, :ensure_correct_user, only: [:edit, :update]
+
+    before_action :ensure_user_logged_in, only: [:edit, :update, :destroy]
+    before_action :ensure_correct_user, only: [:edit]
+    before_action :ensure_admin, only: [:destroy]
+
 
     def index
 	@users = User.all
@@ -61,27 +65,30 @@ class UsersController < ApplicationController
     def user_params
 		params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
-	
-	def ensure_user_logged_in
-		@user = User.find(params[:id])
-		if !logged_in?
-			flash[:warning] = "Warning"
-			redirect_to login_path
-		end
-		rescue
-	    flash[:danger] = "Unable to find user"
-	    redirect_to users_path
-	end
 
-	def ensure_correct_user
-		user = User.find(params[:id])
-		if !current_user?(user)
-			flash[:warning]="Not logged in as #{user.name}"
-			redirect_to login_path
-		end
-		rescue
-	    flash[:danger] = "Unable to find user"
-	    redirect_to users_path
+    def ensure_user_logged_in
+	unless current_user
+	    flash[:warning] = 'Not logged in'
+	    redirect_to login_path
 	end
-    
+    end
+
+    def ensure_correct_user
+	@user = User.find(params[:id])
+	unless current_user?(@user)
+	    flash[:danger] = "Cannot edit other user's profiles"
+	    redirect_to root_path
+	end
+    rescue
+	flash[:danger] = "Unable to find user"
+	redirect_to users_path
+    end
+
+    def ensure_admin
+	unless current_user.admin?
+	    flash[:danger] = 'Only admins allowed to delete users'
+	    redirect_to root_path
+	end
+    end
+>>>>>>> acd38e40bdcbe76945ee9d7e7abb22b973d3ef24
 end
