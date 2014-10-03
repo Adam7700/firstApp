@@ -57,8 +57,8 @@ describe 'AuthorizationPages' do
     describe "authenticated, but wrong users" do
 	describe "for Users controller" do
 	    describe "edit action" do
-		let (:login_user) { FactoryGirl.create(:user) }
-		let (:error_type) { :danger }
+			let (:login_user) { FactoryGirl.create(:user) }
+			let (:error_type) { :danger }
 
 		it_behaves_like "redirects to root" do
 		    let (:browser_path) { edit_user_path(user) }
@@ -68,7 +68,7 @@ describe 'AuthorizationPages' do
 		end
 
 		it_behaves_like "redirects to root", skip_browser: true do
-		    let (:direct_path) { user_path(user) }
+			let (:direct_path) { user_path(user) }
 		    let (:direct_http_method) { :delete }
 		end
 	    end
