@@ -2,17 +2,19 @@ require 'rails_helper'
 
 describe User do
     let(:user) { FactoryGirl.create(:user) }
-
     subject { user }
 
     it { should respond_to(:name) }
     it { should respond_to(:email) }
-
     it { should respond_to(:password) }  # virtual attribute
     it { should respond_to(:password_digest) }
     it { should respond_to(:authenticate) }
 
-
+	it { should respond_to(:church) }
+	it { should respond_to(:user_rides) }
+	it { should respond_to(:rides) }
+	it { should respond_to(:rides_provided) }
+	
     it { should be_valid }
 	it { should_not be_admin }
 
