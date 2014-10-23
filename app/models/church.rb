@@ -4,4 +4,5 @@ class Church < ActiveRecord::Base
   has_many :services
   has_many :users
 
+	validates :user, presence: true
 end

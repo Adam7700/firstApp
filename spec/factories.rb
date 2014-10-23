@@ -14,15 +14,20 @@ FactoryGirl.define do
     end
 
     factory :church do
+		user
     end
 
     factory :service do
-	church
+		church
     end
 
     factory :ride do
+		user
+		service
     end
 
     factory :user_ride do
+		user
+		ride
     end
 end

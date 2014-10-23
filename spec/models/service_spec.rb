@@ -13,8 +13,8 @@ describe Service do
     it { should respond_to(:rides) }
 
     describe "required Church relationship" do
-	before { service.church_id = nil }
+		before { service.church_id = nil }
 
-	it { should_not be_valid }
+		it { should_not be_valid }
     end
 end
