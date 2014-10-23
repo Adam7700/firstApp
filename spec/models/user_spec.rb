@@ -10,6 +10,7 @@ describe User do
     it { should respond_to(:password_digest) }
     it { should respond_to(:authenticate) }
 
+
 	it { should respond_to(:church) }
 	it { should respond_to(:user_rides) }
 	it { should respond_to(:rides) }
