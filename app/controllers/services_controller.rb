@@ -1,20 +1,20 @@
 class ServicesController < ApplicationController
 	def index
 		order_param = (params[:order] || :Time).to_sym
-	ordering = case order_param
-	when :Day
-		:day_of_week
-		@services = Service.all.sort{|x| x.byDay}
-	when :Time
-		:start_time
-		@services = Service.order(ordering)
-	end
-
-    end
-	
-	def byDay
-		if this == "sunday"
-			this[0]="sunday"
+		ordering = case order_param
+		when :Day
+			:day_of_week
+		when :Time
+			:start_time
+		
 		end
-	end
+		if (ordering == :day_of_week)
+			a1=["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday", nil]
+			@services = Service.all.sort_by{|x| a1.index(x.day_of_week)}
+		else
+			@services = Service.order(ordering)
+		end
+    end
+
+	
 end
