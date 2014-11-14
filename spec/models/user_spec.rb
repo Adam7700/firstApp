@@ -10,7 +10,6 @@ describe User do
     it { should respond_to(:password_digest) }
     it { should respond_to(:authenticate) }
 
-
 	it { should respond_to(:church) }
 	it { should respond_to(:user_rides) }
 	it { should respond_to(:rides) }
@@ -18,7 +17,6 @@ describe User do
 	
     it { should be_valid }
 	it { should_not be_admin }
-
 
     describe "empty name" do
 		before { user.name = '' }
@@ -43,7 +41,34 @@ describe User do
 
 		it { should_not be_valid }
     end
-
+	
+	describe "accepts valid email addresses" do
+		valid_addresses = %w[user@example.com
+							   USER@foo.COM
+							   A_US-ER@foo.bar.org
+						   	   first.last@foo.jp
+							   alice+bob@baz.cn]
+		it "should accept each address" do
+			valid_addresses.each do |email|
+				user.email = email
+				should be_valid
+			end
+		end
+	end
+	
+	describe "rejects invalid email addresses" do
+		invalid_addresses = %w[user@example,com
+							   user_at_foo.org
+							   foo@bar_baz.com 
+						   	   foo@bar+baz.com]
+		it "should reject each address" do
+			invalid_addresses.each do |email|
+				user.email = email
+				should be_invalid
+			end
+		end
+	end
+	
     describe "empty password" do
 
 	let (:unsaved_user) { FactoryGirl.build(:user, password: '') }

@@ -11,7 +11,15 @@ class User < ActiveRecord::Base
     has_secure_password
 
  	validates :name, presence: true, length: {maximum: 30}, uniqueness: true
-  	validates :email, presence: true, uniqueness: true
+  	validates :email, 
+			presence: true, 
+			uniqueness: true, 
+	format: { with: /\A         #begin of input
+					[-\w+.]+    #dash, wordy, plus, or dot characters
+					@           #required at sign
+					[-a-z\d.]+  #dash, ;etter, digit, or dot characters
+					\z          #end of input
+					/xi}
 	validates :password, presence: true
 
 end
