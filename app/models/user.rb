@@ -22,4 +22,5 @@ class User < ActiveRecord::Base
 					/xi}
 	validates :password, presence: true
 
+
 end

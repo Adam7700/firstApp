@@ -41,34 +41,35 @@ describe User do
 
 		it { should_not be_valid }
     end
-	
-	describe "accepts valid email addresses" do
-		valid_addresses = %w[user@example.com
-							   USER@foo.COM
-							   A_US-ER@foo.bar.org
-						   	   first.last@foo.jp
-							   alice+bob@baz.cn]
-		it "should accept each address" do
-			valid_addresses.each do |email|
-				user.email = email
-				should be_valid
-			end
-		end
+
+
+    describe "accepts valid email addresses" do
+	valid_addresses = %w[user@example.com
+			     USER@foo.COM
+			     A_US-ER@foo.bar.org
+			     first.last@foo.jp
+			     alice+bob@baz.cn]
+	it "should accept each address" do
+	    valid_addresses.each do |email|
+		user.email = email
+		should be_valid
+	    end
 	end
-	
-	describe "rejects invalid email addresses" do
-		invalid_addresses = %w[user@example,com
-							   user_at_foo.org
-							   foo@bar_baz.com 
-						   	   foo@bar+baz.com]
-		it "should reject each address" do
-			invalid_addresses.each do |email|
-				user.email = email
-				should be_invalid
-			end
-		end
+    end
+
+    describe "rejects invalid email addresses" do
+	invalid_addresses = %w[user@example,com
+			       user_at_foo.org
+                               foo@bar_baz.com
+			       foo@bar+baz.com]
+	it "should reject each address" do
+	    invalid_addresses.each do |email|
+		user.email = email
+		should be_invalid
+	    end
 	end
-	
+    end
+
     describe "empty password" do
 
 	let (:unsaved_user) { FactoryGirl.build(:user, password: '') }
@@ -83,8 +84,15 @@ describe User do
 
     end
 
-    describe "long name" do
-		before { user.name = 'a' * 51 }
+
+    describe "acceptable long name" do
+	before { user.name = 'b' * 50 }
+
+	it { should be_valid }
+    end
+
+    describe "too long name" do
+	before { user.name = 'a' * 51 }
 
 		it { should_not be_valid }
     end
@@ -93,6 +101,7 @@ describe User do
 	let(:duplicate) do
 	    d = user.dup
 	    d.email = 'duplicate@example.com'
+	    d.password = 'new_password'
 	    d
 	end
 
@@ -105,6 +114,7 @@ describe User do
 	let(:duplicate) do
 	    d = user.dup
 	    d.name = 'Jane Doe'
+	    d.password = 'new_password'
 	    d
 	end
 
