@@ -70,6 +70,7 @@ describe User do
 	end
     end
 
+
     describe "empty password" do
 
 	let (:unsaved_user) { FactoryGirl.build(:user, password: '') }
@@ -93,6 +94,7 @@ describe User do
 
     describe "too long name" do
 	before { user.name = 'a' * 51 }
+
 
 		it { should_not be_valid }
     end
