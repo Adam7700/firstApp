@@ -1,5 +1,6 @@
 class ChurchesController < ApplicationController
-
+	before_action :ensure_user_logged_in, only: [:new, :create]
+	
 	def index
 		@churches = Church.all
 	end
@@ -54,18 +55,19 @@ class ChurchesController < ApplicationController
     end
 
     def create
-	@church = Church.new(church_params)
-	@church.user = current_user
-	if @church.save
-	    flash[:success] = "Church created"
-	    redirect_to @church
-	else
-	    flash.now[:danger] = "Unable to create church"
-	    render 'new'
-	end
+		@church = Church.new(church_params)
+		@church.user = current_user
+		
+		if @church.save
+		    flash[:success] = "Church created"
+		    redirect_to @church
+		else
+	 	   flash.now[:danger] = "Unable to create church"
+	 	   render 'new'
+		end
     end
-
-    private
+    
+	private
 
     def church_params
 	params.require(:church).permit(:name,
@@ -74,6 +76,14 @@ class ChurchesController < ApplicationController
 				       :picture,
 				       services_attributes: [ :start_time,
 							      :finish_time,
-							      :location ] )
+							      :location,
+						   		  :day_of_week] )
+    end
+	
+	def ensure_user_logged_in
+		unless current_user
+	    	flash[:warning] = 'Not logged in'
+	    	redirect_to login_path
+		end
     end
 end
