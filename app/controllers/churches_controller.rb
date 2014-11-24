@@ -13,19 +13,19 @@ class ChurchesController < ApplicationController
 	end
 	
 	def destroy
-				@church = Church.find(params[:id])	
-		if current_user.church_id != @church.user_id
-			flash[:danger] = "Unable to find church"
+		@church = Church.find(params[:id])	
+		if current_user == @church.user || current_user.admin?
+			@church.destroy
+        	flash[:success] = "#{@church.name} removed from the site"
+			redirect_to churches_path
+		else
+			flash[:danger] = "Not the right user"
 			redirect_to root_path
 		end
-       	rescue
-	    flash[:danger] = "Unable to find church"
-		
-		redirect_to root
 	end
 	
 	def update
-				@church = Church.find(params[:id])	
+		@church = Church.find(params[:id])	
 		if current_user.church_id != @church.user_id
 			flash[:danger] = "Unable to find church"
 			redirect_to root_path
@@ -38,7 +38,7 @@ class ChurchesController < ApplicationController
 	
 	def edit
 		@church = Church.find(params[:id])	
-		if current_user.church_id != @church.user_id
+		if current_user != @church.user
 			flash[:danger] = "Unable to find church"
 			redirect_to root_path
 		end

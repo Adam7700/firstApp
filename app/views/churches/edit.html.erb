@@ -1,0 +1,8 @@
+<%= render 'shared/errors', object: @user %>
+
+<%= form_for @church do |form| %>
+<p> Edit church </p>
+    <%= render partial: 'fields', locals: { f: form } %>
+
+    <%= form.submit 'Update church profile' %>
+<% end %>
