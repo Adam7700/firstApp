@@ -25,33 +25,33 @@ class ChurchesController < ApplicationController
 	end
 	
 	def update
-		@church = Church.find(params[:id])	
-		if current_user.church_id != @church.user_id
-			flash[:danger] = "Unable to find church"
-			redirect_to root_path
-		end
-       	rescue
-	    flash[:danger] = "Unable to find church"
-		
-		redirect_to root
+		@church = Church.find(params[:id])
+		@service = @church.services.all[0]
+		if @church.update(church_params)
+            flash[:success] = "Church updated!"
+            redirect_to church_path
+        else
+            flash.now[:danger] = "not able to update!"
+            render 'edit'
+        end
 	end
 	
 	def edit
 		@church = Church.find(params[:id])	
-		if current_user != @church.user
-			flash[:danger] = "Unable to find church"
+		if current_user != @church.user && !current_user.admin?
+			flash[:danger] = "wrong user"
 			redirect_to root_path
 		end
        	rescue
-	    flash[:danger] = "Unable to find church"
+		flash[:danger] = "Unable to find church"
 		
-		redirect_to root
+		redirect_to churches_path
 	end
 	
 
     def new
-	@church = Church.new
-	@church.services.build
+		@church = Church.new
+		@church.services.build
     end
 
     def create
@@ -70,15 +70,17 @@ class ChurchesController < ApplicationController
 	private
 
     def church_params
-	params.require(:church).permit(:name,
+		params.require(:church).permit(:name,
 				       :web_site,
 				       :description,
 				       :picture,
-				       services_attributes: [ :start_time,
+					   services_attributes: [:id,
+						   		  :start_time,
 							      :finish_time,
 							      :location,
 						   		  :day_of_week] )
     end
+	
 	
 	def ensure_user_logged_in
 		unless current_user

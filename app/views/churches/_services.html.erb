@@ -1,0 +1,3 @@
+<% @church.services.all.each do |serv| %>
+<div class=<%="service#{serv.id}" %> > <%= serv.start_time %> </div>
+<% end %>
