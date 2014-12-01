@@ -33,7 +33,7 @@ FactoryGirl.define do
 		start_time "9:00"
 		day_of_week "Sunday"
 		
-	church
+#	church
 	transient { num_rides 1 }
 
 	after(:create) do |service, evaluator|
@@ -45,6 +45,13 @@ FactoryGirl.define do
     factory :ride do
 		user
 		service
+		number_of_seats 4
+		seats_available 2
+		return_time "9:00"
+		vehicle "scion"
+		date "9/11/2014"
+		meeting_location "overThere"
+		leave_time "8:00"
     end
 
     factory :user_ride do

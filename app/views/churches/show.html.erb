@@ -2,7 +2,15 @@
 
 <img>Picture: <%= @church.picture %> >
 <a href=<%= @church.web_site %> >official web site </a>
+
+
+<!--<form method="post" action=<%="addAttendee/#{@church.id}/users" %> >
+	<button type="button">Attend this church</button>    
+</form> -->
+<button type="button">Attend this church</button> 
+
 <%= render 'services' %>
+<%= render 'attendees' %>
 
 
 

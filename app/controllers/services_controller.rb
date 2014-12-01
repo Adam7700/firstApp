@@ -16,6 +16,15 @@ class ServicesController < ApplicationController
 		end
     end
 
-
+	def show
+		@service = Service.find(params[:id])
+        rescue
+		flash[:danger] = "Unable to find service"
+	    redirect_to users_path
+	end
 	
+	private
+	def service_params
+		params.require(:service).permit(:date)
+    end
 end

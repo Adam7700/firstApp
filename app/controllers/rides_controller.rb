@@ -9,4 +9,19 @@ class RidesController < ApplicationController
 		   end
 	@rides = Ride.order(ordering)
     end
+	
+	def show
+		@ride = Ride.find(params[:id])
+		rescue
+		flash[:danger] = "Unable to find ride"
+		redirect_to rides_path
+	end
+	
+	
+	private
+	private
+
+	def ride_params
+		params.require(:church).permit(:date)
+    end
 end
