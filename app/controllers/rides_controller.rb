@@ -1,5 +1,5 @@
 class RidesController < ApplicationController
-
+	#before_action :ensure_user_logged_in, only: [:new, :create]
 	def create
 		@ride = Ride.new(ride_params)
 		@ride.user_id = current_user.id
@@ -32,7 +32,7 @@ class RidesController < ApplicationController
 		flash[:danger] = "Unable to find ride"
 		redirect_to rides_path
 	end
-	
+=begin	
 	def update
 		@ride = Ride.find(params[:id])
 		if params[:rider]
@@ -47,6 +47,27 @@ class RidesController < ApplicationController
 		end
 	end
 	
+	def edit
+		@ride = Ride.find(params[:id])	
+       	rescue
+		flash[:danger] = "Unable to find church"
+	
+		redirect_to root_path
+	end
+
+	def destroy
+		@ride = Ride.find(params[:id])	
+		if current_user == @ride.user
+			@ride.destroy
+			flash[:success] = "ride removed from the site"
+			redirect_to root_path
+		else
+			flash[:danger] = "Not the right user"
+			redirect_to root_path
+		end
+	end
+=end
+
 	private
 
 	def ride_params
@@ -57,5 +78,12 @@ class RidesController < ApplicationController
 									   :seats_available, 
 			 						   :meeting_location, 
 							   	       :vehicle)
+    end
+	
+	def ensure_user_logged_in
+		unless current_user
+	    	flash[:warning] = 'Not logged in'
+	    	redirect_to login_path
+		end
     end
 end

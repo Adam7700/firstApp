@@ -7,13 +7,12 @@
 <%if logged_in?%>
 	<%@ride = Ride.new%>
 
+	<%@path = "/services/#{@service.id}/rides"%>
+	<%= form_for @ride, url: @path do |form| %>
+	<%= render partial: 'rideFields', locals: { f: form } %>
 
-<%@path = "/services/#{@service.id}/rides"%>
-<%= form_for @ride, url: @path do |form| %>
-<%= render partial: 'rideFields', locals: { f: form } %>
-
-<%= form.submit 'Offer ride' %>
-<% end %>
+	<%= form.submit 'Offer ride' %>
+	<% end %>
 <%end%>
 
 <%= render 'rides' %>

@@ -1,6 +1,6 @@
 class ChurchesController < ApplicationController
 	before_action :ensure_user_logged_in, only: [:new, :create]
-	before_action :ensure_right_user, only: [:edit, :update]
+	before_action :ensure_right_user, only: [:update] #edit was here
 	
 	def index
 		@churches = Church.all
@@ -93,8 +93,8 @@ class ChurchesController < ApplicationController
 			redirect_to root_path
 		end
 		rescue
-		flash[:danger] = "Unable to find church"
+		flash[:warning] = "Unable to find the church you want ot find here"
 		
-		redirect_to churches_path
+		redirect_to login_path
 	end
 end
