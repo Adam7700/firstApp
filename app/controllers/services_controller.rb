@@ -20,7 +20,25 @@ class ServicesController < ApplicationController
 		@service = Service.find(params[:id])
         rescue
 		flash[:danger] = "Unable to find service"
-	    redirect_to users_path
+	    redirect_to root_path
+	end
+	
+	def new
+		@service = Service.new
+	end
+	
+	def update
+		@service = Service.find(params[:id])
+		if params[:newRide]
+			@service.church_id = params[:newRide]
+			if @service.save
+				flash[:success] = "ride added!"
+            	redirect_to root_path
+			else
+				flash[:danger] = "did not add ride!"
+				redirect_to root_path
+			end
+		end
 	end
 	
 	private

@@ -1,7 +1,11 @@
 <li>
     <ul>
+		<%if service.church != nil%>
+		<li><%=service.id%></li>
 		<li>Church: <%= service.church.name %></li>
+		
 		<li>Day of week: <%= service.day_of_week %></li>
 		<li>start time: <%= service.start_time %></li>
+		<%end%>
     </ul>
 </li>

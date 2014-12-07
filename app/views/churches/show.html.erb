@@ -3,13 +3,14 @@
 <img>Picture: <%= @church.picture %> >
 <a href=<%= @church.web_site %> >official web site </a>
 
+<%if logged_in?%>
+<%=button_to("Attend this church", user_path(current_user, churchAttend: @church.id), method: :patch ) %> 
+<%end%>
 
-<!--<form method="post" action=<%="addAttendee/#{@church.id}/users" %> >
-	<button type="button">Attend this church</button>    
-</form> -->
-<button type="button">Attend this church</button> 
 
 <%= render 'services' %>
+
+<p>Antendees</p>
 <%= render 'attendees' %>
 
 

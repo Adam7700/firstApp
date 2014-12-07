@@ -2,14 +2,12 @@ Rails.application.routes.draw do
 	root "users#index"
 	
   resources :users
-  resources :rides
   resources :churches, shallow: true do
 	  resources :services, shallow: true do
 		  resources :rides
 	  end
   end
 
-	#post 'church/:id/users/', to: 'churches#post', as: :addAttendee
 	
   get 'login', to: 'logins#new', as: :login
   post 'login', to: 'logins#create', as: :logins

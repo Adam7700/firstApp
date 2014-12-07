@@ -42,14 +42,36 @@ class UsersController < ApplicationController
     end
     
     def update
-        @user = User.find(params[:id])
-        if @user.update(user_params)
-            flash[:success] = "Profile updated!"
-            redirect_to user_path
-        else
-            flash.now[:danger] = "not able to update!"
-            render 'edit'
-        end
+		@user = User.find(params[:id])
+		if params[:churchAttend]
+			@user.church_id = params[:churchAttend]
+			if @user.save
+				flash[:success] = "Church Attended!"
+            	redirect_to root_path
+			else
+				flash[:danger] = "did not attend church!"
+				redirect_to root_path
+			end
+		elsif params[:newRide]
+			@ride = Ride.find(params[:newRide])
+			@user.rides << @ride
+			if @user.save
+				@user.rides.last.seats_available = @user.rides.last.seats_available-1
+				flash[:success] = "ride added!"
+				redirect_to root_path
+			else
+				flash[:danger] = "ride not added!"
+				redirect_to root_path
+			end
+		else
+			if @user.update(user_params)
+				flash[:success] = "Profile updated!"
+				redirect_to user_path
+			else
+				flash.now[:danger] = "not able to update!"
+				render 'edit'
+			end
+		end
     end
     
     def destroy

@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 					[-a-z\d.]+  #dash, ;etter, digit, or dot characters
 					\z          #end of input
 					/xi}
-	validates :password, presence: true
+	validates :password, presence: true, on: :create
 
 
 end
