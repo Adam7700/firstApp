@@ -49,7 +49,7 @@ FactoryGirl.define do
 		seats_available 2
 		return_time "9:00"
 		vehicle "scion"
-		date "9/11/2014"
+		date Date.today+1.day
 		meeting_location "overThere"
 		leave_time "8:00"
     end

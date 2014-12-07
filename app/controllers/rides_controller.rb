@@ -1,5 +1,5 @@
 class RidesController < ApplicationController
-	#before_action :ensure_user_logged_in, only: [:new, :create]
+	before_action :ensure_user_logged_in, only: [:new, :create, :update, :edit, :destroy]
 	def create
 		@ride = Ride.new(ride_params)
 		@ride.user_id = current_user.id
@@ -32,7 +32,7 @@ class RidesController < ApplicationController
 		flash[:danger] = "Unable to find ride"
 		redirect_to rides_path
 	end
-=begin	
+	
 	def update
 		@ride = Ride.find(params[:id])
 		if params[:rider]
@@ -66,7 +66,7 @@ class RidesController < ApplicationController
 			redirect_to root_path
 		end
 	end
-=end
+
 
 	private
 

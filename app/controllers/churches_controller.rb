@@ -1,6 +1,7 @@
 class ChurchesController < ApplicationController
-	before_action :ensure_user_logged_in, only: [:new, :create]
-	before_action :ensure_right_user, only: [:update] #edit was here
+	before_action :ensure_user_logged_in, only: [:new, :create, :edit, :update, :destroy]
+	before_action :ensure_right_user, only: [:update] 
+	before_action :ensure_right_user_for_edit, only: [:edit]
 	
 	def index
 		@churches = Church.all
@@ -41,7 +42,6 @@ class ChurchesController < ApplicationController
 		@church = Church.find(params[:id])	
        	rescue
 		flash[:danger] = "Unable to find church"
-		
 		redirect_to churches_path
 	end
 	
@@ -96,5 +96,17 @@ class ChurchesController < ApplicationController
 		flash[:warning] = "Unable to find the church you want ot find here"
 		
 		redirect_to login_path
+	end
+	
+	def ensure_right_user_for_edit
+		@church = Church.find(params[:id])	
+		if current_user.id != @church.user.id && !current_user.admin?
+			flash[:danger] = "wrong user"
+			redirect_to root_path
+		end
+		rescue
+		flash[:danger] = "Unable to find the church you want"
+		
+		redirect_to churches_path
 	end
 end
