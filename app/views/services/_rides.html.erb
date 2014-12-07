@@ -1,0 +1,3 @@
+<% @service.rides.all.each do |ride| %>
+<div class=<%="ride#{ride.id}" %> > <%= ride.leave_time %>  <%= ride.return_time %><%= ride.date %><%= ride.meeting_location %><%= link_to("more info", ride_path(ride.id)) %></div>
+<% end %>

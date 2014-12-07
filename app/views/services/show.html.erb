@@ -1,0 +1,20 @@
+<p>day of week: <%= @service.day_of_week %></p>
+<p>start time: <%= @service.start_time %></p>
+<p>start time: <%= @service.finish_time %></p>
+<p>location: <%= @service.location %></p>
+
+
+<%if logged_in?%>
+	<%@ride = Ride.new%>
+
+
+<%@path = "/services/#{@service.id}/rides"%>
+<%= form_for @ride, url: @path do |form| %>
+<%= render partial: 'rideFields', locals: { f: form } %>
+
+<%= form.submit 'Offer ride' %>
+<% end %>
+<%end%>
+
+<%= render 'rides' %>
+

@@ -1,0 +1,16 @@
+<h1>Profile Page for <%= @ride.id %></h1>
+
+<p>Church: <%=@ride.service.church.name%> </p>
+<p>leave_time:  <%=@ride.leave_time%> </p>
+<p>return_time:  <%=@ride.return_time%> </p>
+<p>Date: <%=@ride.date%> </p>
+<p>location: <%=@ride.service.location %> </p>
+<p>number_of_seats: <%=@ride.number_of_seats%> </p>
+<p>seats available: <%=@ride.seats_available%> </p>
+<p>Vehicle: <%=@ride.vehicle%> </p>
+
+<p><%= link_to(@ride.user.name, user_path(@ride.user.id)) %></p>
+
+<%if logged_in?%>
+<%=button_to("Claim ride", user_path(current_user, newRide: @ride), method: :patch ) %> 
+<%end%>

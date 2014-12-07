@@ -1,0 +1,3 @@
+<% @church.users.all.each do |person| %>
+<div class=<%="user#{person.id}" %> > <%= link_to(person.name, user_path(person.id)) %> </div>
+<% end %>
