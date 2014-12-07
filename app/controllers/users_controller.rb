@@ -54,12 +54,15 @@ class UsersController < ApplicationController
 			end
 		elsif params[:newRide]
 			@ride = Ride.find(params[:newRide])
+			@ride.seats_available = @ride.seats_available-1
+			@ride.save
 			@user.rides << @ride
-			if @user.save
-				@user.rides.last.seats_available = @user.rides.last.seats_available-1
+			if @user.save 
 				flash[:success] = "ride added!"
 				redirect_to root_path
 			else
+				@ride.seats_available = @ride.seats_available+1
+				@ride.save
 				flash[:danger] = "ride not added!"
 				redirect_to root_path
 			end
